@@ -2,24 +2,24 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>四篇论文，四种参与 AI 工作的方式</title><meta name="description" content="以 option2 为主线，通过同一个出行例子体验 AIChains、Cocoa 和 Magentic-UI 的不同参与方式，并核对论文出处。">
+<title>四篇论文，四种参与 AI 工作的方式</title><meta name="description" content="以锚点论文为主线，通过同一个出行例子体验 AIChains、Cocoa 和 Magentic-UI 的不同参与方式，并核对论文出处。">
 <link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css">
 <script defer src="app.js"></script><script defer src="research.js"></script>
 </head>
 <body>
 <a class="skip" href="#workspace">跳到方案</a>
-<header><div><h1 id="task-title">四篇论文，怎样让人参与 AI 的工作？</h1><span id="run-status">已载入示例</span></div><button id="papers-open" class="plain">对照论文与出处 <span>↗</span></button></header>
+<header><div><h1 id="task-title">四篇论文，怎样让人参与 AI 的工作？</h1><span id="run-status"></span></div><button id="papers-open" class="plain">对照论文与出处 <span>↗</span></button></header>
 <section class="paper-nav" aria-label="选择论文体验">
-<p>同一个例子：去 3 公里外的公司。以 option2 的循环为主线，试试另外三篇补充了什么。</p>
+<p>同一个例子：去 3 公里外的公司。以 锚点论文 的循环为主线，试试另外三篇补充了什么。</p>
 <div class="paper-switch" role="group" aria-label="切换论文">
-<button data-paper="option2" aria-pressed="true"><span>option2 <em>主线</em></span><strong>看过结果，再改想法</strong></button>
+<button data-paper="锚点论文" aria-pressed="true"><span>锚点论文 <em>主线</em></span><strong>看过结果，再改想法</strong></button>
 <button data-paper="aichains" aria-pressed="false"><span>AIChains</span><strong>找到具体哪一步要改</strong></button>
 <button data-paper="cocoa" aria-pressed="false"><span>Cocoa</span><strong>决定哪一步由我来做</strong></button>
 <button data-paper="magentic" aria-pressed="false"><span>Magentic-UI</span><strong>执行时，仍能接手</strong></button>
 </div><div id="mode-context" aria-live="polite"></div></section>
 <main>
 <section class="request panel" aria-labelledby="request-title">
-<form id="request-form"><h2 id="request-title">先说说你的打算</h2><span class="inline-source">option2 · 修改要求</span>
+<form id="request-form"><h2 id="request-title">先简单描述你的问题</h2><span class="inline-source">锚点论文 · 修改要求</span>
 <label class="sr-only" for="question">输入路程、到达时间和预算</label>
 <textarea id="question" rows="6" placeholder="例如：25 分钟内到公司，最多花 20 元，不想骑车。">公司离我 3 公里，希望 25 分钟内到，最多花 20 元。快一点优先。</textarea>
 <button class="primary" id="run-button" type="submit">比较方案 <span>→</span></button>
@@ -33,8 +33,8 @@
 <section id="workspace" class="workspace" tabindex="-1" aria-label="比较结果"><section id="paper-playground" class="panel paper-playground" aria-label="当前论文的交互体验"></section><div id="results"></div></section>
 <aside class="research-sidebar"><section id="paper-connection" class="panel paper-connection" aria-label="当前交互与论文的关系"></section><section id="detail" class="panel detail" aria-label="所选方案"></section></aside>
 </main>
-<footer>四篇关注点有交叉；这里的“补充关系”是阅读后的比较，不是能力排名。<span id="data-note">所有 AI 步骤均为本地演示，不会查询地图、叫车或付费。</span></footer>
+<footer>四篇关注点有交叉；这里的“补充关系”是阅读后的比较，不是能力排名。<span id="data-note"></span></footer>
 <dialog id="paper-dialog" aria-labelledby="paper-title"><div class="dialog-head"><h2 id="paper-title">对照论文与出处</h2><button class="close" data-close aria-label="关闭论文说明">×</button></div><div class="paper-intro">先对照它们让人修改的对象，再看当前操作对应的原文。通勤情景是本页的教学改编。</div><div id="paper-content"></div><p class="hint">这里的联系与补充是阅读后的比较，不是四篇论文共同验证的结论。页码按所提供 PDF 计。</p></dialog>
-<dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-head"><h2 id="help-title">怎么使用</h2><button class="close" data-close aria-label="关闭使用说明">×</button></div><ol class="help-steps"><li>先用 option2：看看最快的走法要花多少钱，再决定是否改为“准时就行，选便宜的”。</li><li>切换 AIChains：只改公交等车这一项，观察后面的判断如何更新。</li><li>切换 Cocoa：把确认等车时间分给自己，填好后再让演示继续。</li><li>切换 Magentic-UI：试运行一个方案，体验暂停、接手和付费前确认。</li></ol><p>左侧要求与中间结果在四种体验中共用。切换论文不会重置你的修改；点击“恢复示例”可从头开始。</p><p class="hint">本页借鉴四篇论文的部分交互机制，用通勤情景解释。它没有运行论文中的原系统，也没有调用真实 AI。时间和费用是假设值；所有执行、购票和叫车均为模拟，不会产生真实订单。</p></dialog>
+<dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-head"><h2 id="help-title">怎么使用</h2><button class="close" data-close aria-label="关闭使用说明">×</button></div><ol class="help-steps"><li>先用 锚点论文：看看最快的走法要花多少钱，再决定是否改为“准时就行，选便宜的”。</li><li>切换 AIChains：只改公交等车这一项，观察后面的判断如何更新。</li><li>切换 Cocoa：把确认等车时间分给自己，填好后再让演示继续。</li><li>切换 Magentic-UI：试运行一个方案，体验暂停、接手和付费前确认。</li></ol><p>左侧要求与中间结果在四种体验中共用。切换论文不会重置你的修改；点击“恢复示例”可从头开始。</p><p class="hint"></p></dialog>
 <noscript>请启用 JavaScript，以使用方案比较功能。</noscript>
 </body></html>
