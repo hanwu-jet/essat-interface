@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>四篇论文，四种参与 AI 工作的方式</title><meta name="description" content="以锚点论文为主线，通过同一个出行例子体验 AIChains、Cocoa 和 Magentic-UI 的不同参与方式，并核对论文出处。">
+<link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="lessons.css">
+<script defer src="app.js"></script><script defer src="research.js"></script><script defer src="lessons-cocoa.js"></script><script defer src="lessons-magentic.js"></script><script defer src="lessons.js"></script>
+</head>
+<body>
+<a class="skip" href="#workspace">跳到方案</a>
+<header><div><h1 id="task-title">四篇论文，怎样让人参与 AI 的工作？</h1><span id="run-status"></span></div><button id="papers-open" class="plain">对照论文与出处 <span>↗</span></button></header>
+<section class="paper-nav" aria-label="选择论文体验">
+<p>用去公司这个例子，试试四篇论文怎样让人参与 AI 的工作。每篇都有基本操作，以及两个来自论文发现的小实验。</p>
+<div class="paper-switch" role="group" aria-label="切换论文">
+<button data-paper="锚点论文" aria-pressed="true"><span>锚点论文 <em>主线</em></span><strong>看过结果，再改想法</strong></button>
+<button data-paper="aichains" aria-pressed="false"><span>AIChains</span><strong>找到具体哪一步要改</strong></button>
+<button data-paper="cocoa" aria-pressed="false"><span>Cocoa</span><strong>决定哪一步由我来做</strong></button>
+<button data-paper="magentic" aria-pressed="false"><span>Magentic-UI</span><strong>执行时，仍能接手</strong></button>
+</div><div id="mode-context" aria-live="polite"></div></section>
+<main>
+<section class="request panel" aria-labelledby="request-title">
+<div id="lesson-setup" hidden></div>
+<form id="request-form"><h2 id="request-title">先简单描述你的问题</h2><span class="inline-source">锚点论文 · 修改要求</span>
+<label class="sr-only" for="question">输入路程、到达时间和预算</label>
+<textarea id="question" rows="6" placeholder="例如：25 分钟内到公司，最多花 20 元，不想骑车。">公司离我 3 公里，希望 25 分钟内到，最多花 20 元。快一点优先。</textarea>
+<button class="primary" id="run-button" type="submit">比较方案 <span>→</span></button>
+<p id="mode-note" class="hint">可以改路程、时间和预算，也可以加上“不想骑车”。改好后点击比较。</p>
+<div id="form-message" role="status" aria-live="polite"></div>
+</form>
+<div class="preference"><h3>也可以试试</h3><div class="choices" role="group" aria-label="示例问题"><button data-example="no-bike">不想骑车</button><button data-example="hurry">15 分钟 / 5 元</button></div></div>
+<div class="requirements"><h3>这次的要求</h3><div id="requirement-list"></div><p class="hint" id="unmeasured">时间和费用是演示用的假设值，不代表实际路况或价格。</p></div>
+<div class="side-bottom"><button id="reset" class="plain">恢复示例</button><button id="help-open" class="plain">使用说明</button></div>
+</section>
+<section id="workspace" class="workspace" tabindex="-1" aria-label="比较结果"><section id="paper-playground" class="panel paper-playground" aria-label="当前论文的交互体验"></section><div id="results"></div></section>
+<aside class="research-sidebar"><section id="paper-connection" class="panel paper-connection" aria-label="当前交互与论文的关系"></section><section id="detail" class="panel detail" aria-label="所选方案"></section></aside>
+</main>
+<footer><span id="data-note"></span></footer>
+<dialog id="paper-dialog" aria-labelledby="paper-title"><div class="dialog-head"><h2 id="paper-title">对照论文与出处</h2><button class="close" data-close aria-label="关闭论文说明">×</button></div><div class="paper-intro">先对照它们让人修改的对象，再看当前操作对应的原文。通勤情景是本页的教学改编。</div><div id="paper-content"></div><p class="hint">这里的联系与补充是阅读后的比较，不是四篇论文共同验证的结论。页码按所提供 PDF 计。</p></dialog>
+<dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-head"><h2 id="help-title">怎么使用</h2><button class="close" data-close aria-label="关闭使用说明">×</button></div><ol class="help-steps"><li>先选一篇论文，再选“基本操作”或一个“发现小实验”。</li><li>基本操作可以改左侧要求，体验改标准、改中间结果、共同分工与接手执行。</li><li>小实验使用左侧列出的固定情景。点击后，观察哪些判断或步骤真正改变了。</li><li>展开“原文例子与证据”，核对这个设计来自什么观察，以及论文并没有证明什么。</li></ol><p>基本操作的要求与中间结果在四篇之间共用；小实验独立保存进度。返回自由比较不会丢失此前修改。点击“恢复示例”可将全部恢复。</p></dialog>
+<noscript>请启用 JavaScript，以使用方案比较功能。</noscript>
+</body></html>
