@@ -14,7 +14,7 @@ function afterScenarioChange(label,extra=''){
  renderResearch();
 }
 function invalidateExecution(reason){if(research.execution.status!=='idle'){research.execution={status:'idle',planId:null,pausedFrom:null,logs:[reason]}}}
-function resetResearch(){Object.assign(research,{trail:[],before:null,chainRuns:0,chainNote:'',waitSource:'演示初值',cocoa:{owner:'ai',status:'ready',note:''},execution:{status:'idle',planId:null,pausedFrom:null,logs:[]}})}
+function resetResearch(){Object.assign(research,{trail:[],before:null,chainRuns:0,chainNote:'',waitSource:'演示初值',cocoa:{owner:'ai',status:'ready',note:''},execution:{status:'idle',planId:null,pausedFrom:null,logs:[]}});if(typeof resetLessons==='function')resetLessons()}
 function sourceButton(id){return `<button class="source-link" data-source="${id}">对应原文 · ${papers[id].ref} ↗</button>`}
 function trail(){const item=research.trail.at(-1);return item?`<div class="change-receipt" role="status"><b>${esc(item.label)}</b><p>${item.from===item.to?`优先选择仍是${esc(item.to)}`:`${esc(item.from)} → ${esc(item.to)}`}${item.extra?` · ${esc(item.extra)}`:''}</p></div>`:''}
 function optionPlay(){
@@ -58,8 +58,10 @@ function renderResearch(){
  const id=research.mode,p=papers[id];
  document.querySelectorAll('[data-paper]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.paper===id));
  $('#mode-context').innerHTML=`<b>${p.name}</b><span>${p.context}</span>`;
- $('#paper-playground').innerHTML=({锚点论文:optionPlay,aichains:chainPlay,cocoa:cocoaPlay,magentic:executionPlay}[id])();
+ const basic=({锚点论文:optionPlay,aichains:chainPlay,cocoa:cocoaPlay,magentic:executionPlay}[id])();
+ $('#paper-playground').innerHTML=typeof renderLesson==='function'?renderLesson(id,basic):basic;
  $('#paper-connection').innerHTML=`<div class="connection-head"><span class="paper-label">这一步与论文的关系</span><h2>${p.name}</h2></div><dl><dt>论文里</dt><dd>${p.original}</dd><dt>你在这里做的事</dt><dd>${p.here}</dd><dt>${id==='锚点论文'?'为什么以它为主线':'对 锚点论文 的补充'}</dt><dd>${p.relation}</dd></dl>${sourceButton(id)}<p class="scope-note">${p.boundary}</p>`;
+ if(typeof renderLessonContext==='function')renderLessonContext(id);
 }
 function populateSources(){
  $('#paper-content').innerHTML=`<div class="comparison-scroll"><table class="paper-comparison"><thead><tr><th>论文</th><th>主要让人修改什么</th><th>在本页怎样体现</th></tr></thead><tbody>${Object.entries(papers).map(([id,p])=>`<tr><td><button data-source="${id}">${p.name}${id==='锚点论文'?' · 主线':''}</button></td><td>${p.object}</td><td>${p.addition}</td></tr>`).join('')}</tbody></table></div><p class="comparison-note">这些关注点并不互斥：AIChains 也支持理解任务，Cocoa 也涉及目标演变，Magentic-UI 也能共同改计划。表格比较的是设计重点，不是互相排斥的四个阶段。</p>${Object.entries(papers).map(([id,p])=>`<details class="source-paper" id="source-${id}"><summary>${p.name} · ${p.title}</summary><h3>${p.full}</h3><p><b>原文机制：</b>${p.original}</p><p><b>证据定位：</b>${p.evidence}</p><p><b>本页转译：</b>${p.design}</p><p><b>比较判断：</b>${p.relation}</p><p class="scope-note">${p.boundary}</p><a href="${p.url}" target="_blank" rel="noopener noreferrer">查看原文 ↗</a><span class="source-location">${p.ref}</span></details>`).join('')}<div class="paper-summary">锚点论文 提供“看结果、再想清楚目标”的主线；其余三篇分别把人的参与落实到步骤、分工和执行动作。本页的对应关系是基于原文做出的比较与教学改编，四篇论文没有共同验证这个通勤例子。</div>`;
